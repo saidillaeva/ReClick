@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema</title>
+</head>
+<body>
+{% for post in post_key %}
+    <i>{{ post.title }}</i>
+    <p>{{ post.description }}</p>
+    <img src="{{ post.image.url }}" alt="">
+    <b>{{ post.cost }}</b>
+    <p>{{ post.created_date }}</p>
+    <hr>
+{% endfor %}
+</body>
+</html>

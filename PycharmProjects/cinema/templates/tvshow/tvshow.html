@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>List of the films</h1>
+<button> <a href="/create_film/">Add</a> </button>
+<button> <a href="delete_list/">Delete</a> </button>
+<button> <a href="update_list/">Edit</a> </button>
+
+<center>
+    {% for i in show_key %}
+        <h1>{{i.title}}</h1>
+        <img src="{{i.image.url}}" alt=""><br>
+        <a href="/show_detail/{{i.id}}">Detailed</a>
+    {% endfor %}
+</center>
+</body>
+</html>
