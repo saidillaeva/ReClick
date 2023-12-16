@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant detail</title>
+</head>
+<body>
+{% include 'header_and_footer/header.html' %}
+<br><br><br><br>
+<center>
+<div class="card" style="width: 18rem;">
+  <img src="{{restaurant_id.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">{{restaurant_id.restaurant}}</p>
+    <p class="card-text">{{restaurant_id.description}}</p>
+    <p class="card-text">{{restaurant_id.cost}}</p>
+    <p class="card-text">{{restaurant_id.genre}}</p>
+    <p class="card-text">{{restaurant_id.created_at}}</p>
+    <p class="card-text">{{restaurant_id.address}}</p>
+    <p class="card-text">{{restaurant_id.contact_number}}</p>
+
+  </div>
+</div>
+</center>
+
+{% include 'header_and_footer/footer.html' %}
+</body>
+</html>
