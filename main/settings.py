@@ -29,8 +29,8 @@ INSTALLED_APPS = [
     'home_page',
     'custom_users',
     'persons',
-]
 
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

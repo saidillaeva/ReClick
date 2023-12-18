@@ -11,3 +11,4 @@ class CustomUser(User):
     phone_number = models.CharField(max_length=14, default='+996')
     age = models.PositiveIntegerField(default=18, validators=[MaxValueValidator(26), MinValueValidator(18)])
     gender = models.CharField(max_length=100, choices=GENDER)
+
