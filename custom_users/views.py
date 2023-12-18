@@ -17,7 +17,7 @@ class AuthLoginView(LoginView):
     template_name = 'users/login.html'
 
     def get_success_url(self):
-        return reverse('persons:person_list')
+        return reverse('home_page:home_page')
 
 
 class AuthLogoutView(LogoutView):

@@ -11,7 +11,7 @@ def string_post_view(request):
         return render(request, template_name='home_page/index.html',
                       context={
                           'string_': string_,
-                          'product_list': restaurant_list,
+                          'restaurant_list': restaurant_list,
                           'afisha': afisha,
                           'slider_list': slider
 

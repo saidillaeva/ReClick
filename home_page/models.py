@@ -24,7 +24,7 @@ class RestaurantPostModel(models.Model):
     )
     restaurant = models.CharField(max_length=100, verbose_name="Enter your restaurant name")
     description = models.TextField()
-    image = models.ImageField(upload_to='products/')
+    image = models.ImageField(upload_to='restaurants/')
     cost = models.PositiveIntegerField()
     genre = models.CharField(max_length=100, choices=GENRE)
     created_at = models.DateTimeField(auto_now_add=True)
