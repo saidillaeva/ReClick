@@ -6,6 +6,7 @@ from django.views.generic import CreateView, ListView
 from django.urls import reverse_lazy
 from . import forms
 
+
 class RegistrationView(CreateView):
     form_class = forms.CustomRegistrationForm
     template_name = 'users/register.html'
@@ -30,3 +31,6 @@ class UserListView(ListView):
 
     def get_queryset(self):
         return self.model.objects.all()
+
+
+

@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from .models import RunString, RestaurantPostModel, Afisha, Slider
+from .models import RunString, RestaurantPostModel, Afisha, Slider, Restaurant
+from django.db.models import Q
+from django.views.generic import TemplateView, ListView
 
 
 def string_post_view(request):
@@ -23,3 +25,21 @@ def restaurants_detail_view(request, id):
         restaurant_id = get_object_or_404(RestaurantPostModel, id=id)
         return render(request, template_name='home_page/restaurant_detail.html', context={'restaurant_id': restaurant_id})
 
+
+class HomePageView(TemplateView):
+    template_name = 'header.html'
+
+class SearchResultsView(ListView):
+    model = Restaurant
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+
+        object_list = Restaurant.objects.filter(
+
+            Q(name__icontains=query) | Q(cuisine__icontains=query)
+
+        )
+
+        return object_list

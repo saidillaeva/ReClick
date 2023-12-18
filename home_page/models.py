@@ -49,3 +49,12 @@ class Slider(models.Model):
     def __str__(self):
         return self.photo
 
+class Restaurant(models.Model):
+    name = models.CharField(max_length=255)
+    cuisine = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name_plural = "restaurants"
+
+    def __str__(self):
+        return self.name
