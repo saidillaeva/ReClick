@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'home_page',
     'custom_users',
     'persons',
+    'reservation',
 
 ]
 MIDDLEWARE = [
