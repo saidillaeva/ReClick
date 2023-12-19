@@ -1,12 +1,15 @@
-from django.shortcuts import render, get_object_or_404
-from .models import BanquetHall
+from django.shortcuts import render, get_object_or_404,  redirect
+from django.contrib import messages
+from .models import BanquetHall, Review
 from .forms import ReservationForm, ReviewForm
+from django.http import HttpResponse
+from decimal import Decimal
+
 def reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            # Обработка бронирования здесь
-            # Можете сохранить бронь в базу данных или отправить уведомление
+
             return render(request, 'success_page.html')  # Замените 'success_page.html' на ваш шаблон успешного бронирования
     else:
         form = ReservationForm()
@@ -17,7 +20,7 @@ def reservation(request):
 
 def hall_detail(request, hall_id):
     hall = get_object_or_404(BanquetHall, pk=hall_id)
-    reviews = hall.reviews.all()  # Получаем все отзывы для этого банкетного зала
+    reviews = hall.reviews.all()
 
     if request.method == 'POST':
         review_form = ReviewForm(request.POST)
@@ -27,13 +30,16 @@ def hall_detail(request, hall_id):
             new_review.save()
 
             # Обновляем рейтинг банкетного зала на основе нового отзыва
-            hall.total_reviews += 1
-            hall.rating = (hall.rating * (hall.total_reviews - 1) + new_review.rating) / hall.total_reviews
+            all_reviews = hall.reviews.all()
+            total_reviews = len(all_reviews)
+            total_rating = sum(review.rating for review in all_reviews)
+
+            hall.rating = Decimal(total_rating) / Decimal(total_reviews)
             hall.save()
 
-            return render(request, 'hall_detail.html', {'hall': hall, 'reviews': reviews, 'review_form': ReviewForm()})
+            messages.success(request, 'Отзыв успешно отправлен!')
+            return redirect('hall_detail', hall_id=hall_id)
     else:
         review_form = ReviewForm()
 
-    # Убедитесь, что в конце представления возвращается объект HttpResponse
     return render(request, 'hall_detail.html', {'hall': hall, 'reviews': reviews, 'review_form': review_form})
