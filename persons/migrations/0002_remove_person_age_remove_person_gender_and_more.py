@@ -55,6 +55,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='person',
             name='name',
-            field=models.CharField(max_length=100, null=True, verbose_name='Enter your restaurant name'),
+            field=models.CharField(max_length=100, null=True, verbose_name='Enter your restaurants name'),
         ),
     ]

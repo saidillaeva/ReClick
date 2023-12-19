@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for restaurant in restaurant_list %}
+    <div>
+        <h2>{{ restaurant.title }}</h2>
+        <p>Type: {{ restaurant.type }}</p>
+        <p>Description: {{ restaurant.description }}</p>
+        <p>Image: <img src="{{ restaurant.image.url }}" alt="{{ restaurant.title }}" style="max-width: 200px;"></p>
+        <p>Active: {{ restaurant.act }}</p>
+        <p>Cost: ${{ restaurant.cost }}</p>
+        <p>Created At: {{ restaurant.created_at }}</p>
+    </div>
+    <hr>
+{% endfor %}
+</body>
+</html>

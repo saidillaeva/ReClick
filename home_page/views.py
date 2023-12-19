@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 
 
+
 def string_post_view(request):
     if request.method == 'GET':
         string_ = RunString.objects.all()
@@ -44,3 +45,8 @@ class SearchResultsView(ListView):
 
         return object_list
 
+
+
+def restaurant_list(request):
+    restaurants = RestaurantPostModel.objects.all()
+    return render(request, 'restaurant_list.html', {'restaurants': restaurants})

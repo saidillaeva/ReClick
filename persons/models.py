@@ -10,7 +10,7 @@ class Person(models.Model):
         ('Chinese', 'Chinese'),
 
     )
-    name = models.CharField(max_length=100, verbose_name="Enter your restaurant name", null=True)
+    name = models.CharField(max_length=100, verbose_name="Enter your restaurants name", null=True)
     description = models.TextField(null=True)
     average_cost = models.PositiveIntegerField(null=True)
     genre = models.CharField(max_length=100, choices=GENRE, null=True)
