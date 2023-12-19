@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import string_post_view, restaurants_detail_view, SearchResultsView, HomePageView
+from .views import restaurant_list
 
 
 app_name = 'home_page'
@@ -8,4 +9,6 @@ urlpatterns = [
     path('restaurant_detail/<int:id>/', restaurants_detail_view),
     path('search/', SearchResultsView.as_view(), name='search_results'),
     path('header/', HomePageView.as_view(), name='header'),
+    path('restaurants/', restaurant_list, name='restaurant_list'),
+
 ]
