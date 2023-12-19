@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ hall.name }}</h2>
+  <p>Capacity: {{ hall.capacity }}</p>
+  <p>Average Price per Person: ${{ hall.average_price_per_person }}</p>
+  <p>Description: {{ hall.description }}</p>
+
+  <!-- Display Rating -->
+  <h3>Rating: {{ hall.rating }}</h3>
+
+  <!-- Display Reviews -->
+  <h3>Reviews:</h3>
+  {% if reviews %}
+    <ul>
+      {% for review in reviews %}
+        <li>{{ review.name }} - Rating: {{ review.rating }} - {{ review.comment }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No reviews yet.</p>
+  {% endif %}
+
+  <!-- Add a Review Form -->
+  <h3>Add a Review:</h3>
+  <form method="post" action="{% url 'hall_detail' hall.id %}">
+    {% csrf_token %}
+    {{ review_form.as_p }}
+    <button type="submit">Submit Review</button>
+  </form>
+{% endblock %}
+</body>
+</html>
