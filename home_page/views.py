@@ -43,3 +43,4 @@ class SearchResultsView(ListView):
         )
 
         return object_list
+
