@@ -2,21 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UserLIst</title>
+    <title>UserList</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-<div>
-  <ul>
-    {% for i in object_list %}
-    <li>
-      <h1>{{i.username}}</h1>
-    </li>
-    {% endfor %}
-  </ul>
-    <form action="{% url 'users:login' %}" method="POST">
-        {% csrf_token %}
-        <button type="submit">Log out</button>
-    </form>
-</div>
+    <div>
+        <ul>
+            {% for user in object_list %}
+                <li>
+                    <h1>{{ user.username }}</h1>
+                </li>
+            {% endfor %}
+        </ul>
+        <form action="{% url 'users:login' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+        </form>
+    </div>
 </body>
 </html>
