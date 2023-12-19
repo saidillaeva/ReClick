@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
             name='RestaurantPostModel',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('restaurant', models.CharField(max_length=100, verbose_name='Enter your restaurant name')),
+                ('restaurants', models.CharField(max_length=100, verbose_name='Enter your restaurants name')),
                 ('description', models.TextField()),
                 ('image', models.ImageField(upload_to='products/')),
                 ('cost', models.PositiveIntegerField()),

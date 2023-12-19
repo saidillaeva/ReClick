@@ -22,7 +22,7 @@ class RestaurantPostModel(models.Model):
         ('Chinese', 'Chinese'),
 
     )
-    restaurant = models.CharField(max_length=100, verbose_name="Enter your restaurant name")
+    restaurant = models.CharField(max_length=100, verbose_name="Enter your restaurants name")
     description = models.TextField()
     image = models.ImageField(upload_to='restaurants/')
     cost = models.PositiveIntegerField()
