@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Список ресторанов</title>
+    <title>List of the restaurants</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -48,15 +48,15 @@
     </style>
 </head>
 <body>
-    <h1>Список ресторанов</h1>
+    <h1>List of the restaurants</h1>
     <ul>
         {% for restaurant in restaurants %}
             <li>
                 <h2>{{ restaurant.restaurant }}</h2>
-                <p><strong>Адрес:</strong> {{ restaurant.address }}</p>
-                <p><strong>Описание:</strong> {{ restaurant.description }}</p>
-                <p><strong>Стоимость:</strong> {{ restaurant.cost }}</p>
-                <p><strong>Жанр:</strong> {{ restaurant.genre }}</p>
+                <p><strong>Address:</strong> {{ restaurant.address }}</p>
+                <p><strong>Description:</strong> {{ restaurant.description }}</p>
+                <p><strong>Average check:</strong> {{ restaurant.cost }}</p>
+                <p><strong>Type:</strong> {{ restaurant.genre }}</p>
                 <!-- Добавьте другие поля модели, которые вам нужны -->
             </li>
         {% endfor %}
