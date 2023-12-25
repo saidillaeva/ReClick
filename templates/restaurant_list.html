@@ -1,67 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>List of the restaurants</title>
+    <meta charset="UTF-8">
+    <title>Список ресторанов</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
-            text-align: center;
             margin: 0;
             padding: 0;
         }
 
-        h1 {
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
             color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        select, button {
+            padding: 8px;
+            font-size: 16px;
         }
 
         ul {
             list-style: none;
             padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-evenly;
         }
 
         li {
+            margin-bottom: 20px;
             border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 15px;
-            width: 300px;
-            background-color: #fff;
+            padding: 10px;
+            border-radius: 4px;
         }
 
         h2 {
-            color: #333;
             margin-bottom: 10px;
-        }
-
-        p {
-            margin: 5px 0;
         }
 
         strong {
             font-weight: bold;
         }
+
+        img {
+            margin-bottom: 10px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .btn-book {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-book:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
-    <h1>List of the restaurants</h1>
-    <ul>
-        {% for restaurant in restaurants %}
-            <li>
-                <h2>{{ restaurant.restaurant }}</h2>
-                <p><strong>Address:</strong> {{ restaurant.address }}</p>
-                <p><strong>Description:</strong> {{ restaurant.description }}</p>
-                <p><strong>Average check:</strong> {{ restaurant.cost }}</p>
-                <p><strong>Type:</strong> {{ restaurant.genre }}</p>
-                <!-- Добавьте другие поля модели, которые вам нужны -->
-            </li>
-        {% endfor %}
-    </ul>
+    <header>
+        <h1>Список ресторанов</h1>
+    </header>
+
+    <main>
+        <form method="get" action="">
+            <label for="genre">Выберите жанр:</label>
+            <select name="genre" id="genre">
+                <option value="" {% if not selected_genre %}selected{% endif %}>Все</option>
+                {% for genre in unique_genres %}
+                    <option value="{{ genre }}" {% if selected_genre == genre %}selected{% endif %}>{{ genre }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Фильтровать</button>
+        </form>
+
+        <ul>
+            {% for restaurant in restaurants %}
+                <li>
+                    <h2>{{ restaurant.name }}</h2>
+                    <p><strong>Адрес:</strong> {{ restaurant.address }}</p>
+                    <p><strong>Описание:</strong> {{ restaurant.description }}</p>
+                    <p><strong>Стоимость:</strong> {{ restaurant.cost }}</p>
+                    <p><strong>Жанр:</strong> {{ restaurant.genre }}</p>
+<!--                    <img src="{{ restaurant.image.url }}" alt="{{ restaurant.name }}" width="300" height="300">-->
+                    <a href="http://127.0.0.1:8000/reservation/" class="btn-book">Забронировать</a>
+
+                    <!-- Добавьте другие поля модели, которые вам нужны -->
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
 </body>
 </html>
-
-

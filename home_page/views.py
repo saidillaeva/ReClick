@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import RunString, RestaurantPostModel, Afisha, Slider, Restaurant
 from django.db.models import Q
 from django.views.generic import TemplateView, ListView
-
+from django.contrib.auth.decorators import login_required
 
 
 def string_post_view(request):
@@ -48,5 +48,15 @@ class SearchResultsView(ListView):
 
 
 def restaurant_list(request):
-    restaurants = RestaurantPostModel.objects.all()
-    return render(request, 'restaurant_list.html', {'restaurants': restaurants})
+    # Получаем уникальные значения жанров из ресторанов
+    unique_genres = RestaurantPostModel.objects.values_list('genre', flat=True).distinct()
+
+    selected_genre = request.GET.get('genre', None)
+
+    if selected_genre:
+        restaurants = RestaurantPostModel.objects.filter(genre=selected_genre)
+    else:
+        restaurants = RestaurantPostModel.objects.all()
+
+    return render(request, 'restaurant_list.html', {'restaurants': restaurants, 'unique_genres': unique_genres, 'selected_genre': selected_genre})
+
