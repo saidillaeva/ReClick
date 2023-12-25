@@ -4,6 +4,27 @@
     <meta charset="UTF-8">
     <title>Example of menu to Bootstrap</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+  .nav-item {
+    display: inline-block; /* Делаем элемент блочным, чтобы применить ширину и высоту */
+    margin-right: 10px; /* Добавляем немного отступа справа для разделения элементов */
+  }
+
+  .nav-link {
+    display: block; /* Делаем элемент блочным для настройки ширины и высоты */
+    padding: 10px; /* Задаем отступы внутри блока */
+    background-color: #3498db; /* Задаем цвет фона */
+    color: #fff; /* Задаем цвет текста */
+    text-decoration: none; /* Убираем подчеркивание ссылки */
+    border-radius: 5px; /* Добавляем скругленные углы */
+    transition: background-color 0.3s; /* Добавляем плавное изменение цвета фона при наведении */
+  }
+
+  .nav-link:hover {
+    background-color: #2980b9; /* Изменяем цвет фона при наведении */
+  }
+</style>
+
 </head>
 <body>
  <style>
@@ -18,19 +39,19 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link text-light" href="#">Главная<span class="sr-only">(текущая)</span></a>
+                <a class="nav-link text-light" href="#">Main page<span class="sr-only">(текущая)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="http://127.0.0.1:8000/restaurants/">Рестораны</a>
+                <a class="nav-link text-light" href="http://127.0.0.1:8000/restaurants/">Restaurants</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="http://127.0.0.1:8000/reservation/">Банкеты</a>
+                <a class="nav-link text-light" href="http://127.0.0.1:8000/reservation/">Banquets</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="http://127.0.0.1:8000/hall/1/">Рейтинг</a>
+                <a class="nav-link text-light" href="http://127.0.0.1:8000/hall/1/">Rating and review</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="http://127.0.0.1:8000/person_list/">Добавить ресторан</a>
+                <a class="nav-link text-light" href="http://127.0.0.1:8000/person_list/">Add restaurant</a>
             </li>
 
             <!-- Динамическая кнопка входа/выхода -->
@@ -51,7 +72,7 @@
             <!-- Добавьте вашу форму поиска здесь -->
             <li class="nav-item">
                 <form action="{% url 'home_page:search_results' %}" method="get">
-                    <input name="q" type="text" placeholder="Поиск...">
+                    <input name="q" type="text" placeholder="Search...">
                 </form>
             </li>
         </ul>
