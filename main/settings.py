@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'home_page',
     'custom_users',
     'persons',
-    'restaurants',
     'reservation',
 
 ]

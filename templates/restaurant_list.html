@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Список ресторанов</title>
+    <title>List of the restaurants</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -92,31 +92,32 @@
 </head>
 <body>
     <header>
-        <h1>Список ресторанов</h1>
+        <h1>List of the restaurants</h1>
     </header>
 
     <main>
         <form method="get" action="">
-            <label for="genre">Выберите жанр:</label>
+            <label for="genre">Choose type:</label>
             <select name="genre" id="genre">
-                <option value="" {% if not selected_genre %}selected{% endif %}>Все</option>
+                <option value="" {% if not selected_genre %}selected{% endif %}>All</option>
                 {% for genre in unique_genres %}
                     <option value="{{ genre }}" {% if selected_genre == genre %}selected{% endif %}>{{ genre }}</option>
                 {% endfor %}
             </select>
-            <button type="submit">Фильтровать</button>
+            <button type="submit">Filter</button>
         </form>
 
         <ul>
             {% for restaurant in restaurants %}
                 <li>
                     <h2>{{ restaurant.name }}</h2>
-                    <p><strong>Адрес:</strong> {{ restaurant.address }}</p>
-                    <p><strong>Описание:</strong> {{ restaurant.description }}</p>
-                    <p><strong>Стоимость:</strong> {{ restaurant.cost }}</p>
-                    <p><strong>Жанр:</strong> {{ restaurant.genre }}</p>
+                    <p><strong>Restaurant:</strong> {{ restaurant.restaurant }}</p>
+                    <p><strong>Address:</strong> {{ restaurant.address }}</p>
+                    <p><strong>Description:</strong> {{ restaurant.description }}</p>
+                    <p><strong>Average cost:</strong> {{ restaurant.cost }}</p>
+                    <p><strong>Type of meals:</strong> {{ restaurant.genre }}</p>
 <!--                    <img src="{{ restaurant.image.url }}" alt="{{ restaurant.name }}" width="300" height="300">-->
-                    <a href="http://127.0.0.1:8000/reservation/" class="btn-book">Забронировать</a>
+                    <a href="http://127.0.0.1:8000/reservation/" class="btn-book">Book</a>
 
                     <!-- Добавьте другие поля модели, которые вам нужны -->
                 </li>

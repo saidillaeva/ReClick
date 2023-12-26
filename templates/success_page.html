@@ -10,6 +10,16 @@
 {% block content %}
   <h2>Reservation Successful!</h2>
   <p>Your reservation has been confirmed. We look forward to hosting your event.</p>
+
+  {% if booked_reservations %}
+    <h3>Existing reservations for the selected hall and date:</h3>
+    <ul>
+      {% for reservation in booked_reservations %}
+        <li>{{ reservation.name }} - {{ reservation.hall }} from {{ reservation.start_time }} to {{ reservation.end_time }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 {% endblock %}
+
 </body>
 </html>

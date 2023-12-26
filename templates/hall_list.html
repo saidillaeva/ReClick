@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Available restaurants</h2>
+  <ul>
+    {% for hall in halls %}
+      <li><a href="{% url 'hall_detail' hall.id %}">{{ hall.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+</body>
+</html>
