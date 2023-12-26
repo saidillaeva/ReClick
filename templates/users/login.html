@@ -9,7 +9,7 @@
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
-   <a href="http://127.0.0.1:8000/home_page/">Log in</a>
+    <a class="btn btn-primary" href="http://127.0.0.1:8000/home_page/" role="button">Log in</a>
 </form>
 </body>
 </html>

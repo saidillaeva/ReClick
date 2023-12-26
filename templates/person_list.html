@@ -5,6 +5,37 @@
     <title>PersonList</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+    body {
+        background-color: rgba(230, 240, 240, 0.5); /* Полупрозрачный цвет фона */
+        background-image: url('https://images.pexels.com/photos/17294688/pexels-photo-17294688/free-photo-of-interior-of-a-restaurant.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .block1 a {
+        text-decoration: none;
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    .a1 {
+        color: green;
+        border: 4px solid green;
+    }
+
+    .a2 {
+        color: red;
+        border: 4px solid red;
+    }
+
+    .a3 {
+        color: #65550c;
+        border: 4px solid #65550c;
+    }
+</style>
+
 </head>
 <body class="container">
 <nav class="navbar navbar-expand-lg bg-dark">
@@ -42,7 +73,7 @@
         </div>
     </div>
 </nav>
-<div style="background-color: darksalmon; padding: 20px; margin-top: 20px;">
+<div style="background-color: #385943; padding: 20px; margin-top: 20px;">
     <center>
         <h1 style="color: white;">NEW RESTAURANT</h1>
         <button style="width: 100px; height: 50px; background-color: #8BC34A;">
@@ -51,7 +82,7 @@
     </center>
 </div>
 
-<div class="block1" style="background-color: #A9A9A9; padding: 20px; margin-top: 20px;">
+<div class="block1" style="background-color: #a67e49; padding: 20px; margin-top: 20px;">
     <ul>
         {% for i in object_list %}
         <li style="list-style: none; margin-bottom: 20px;">
@@ -64,30 +95,10 @@
         {% endfor %}
     </ul>
 </div>
-<style>
-    .block1 a {
-        text-decoration: none;
-        font-size: 18px;
-        margin-right: 10px;
-    }
-
-    .a1 {
-        color: green;
-        border: 4px solid green;
-    }
-
-    .a2 {
-        color: red;
-        border: 4px solid red;
-    }
-
-    .a3 {
-        color: #65550c;
-        border: 4px solid #65550c;
-    }
-</style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
 </body>
 </html>
+
+
