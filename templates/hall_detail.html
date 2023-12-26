@@ -89,46 +89,48 @@
     </style>
 </head>
 <body>
-    {% extends 'base.html' %}
 
-    {% block content %}
-      <h2>{{ hall.name }}</h2>
-      <p>Capacity: {{ hall.capacity }}</p>
-      <p>Average Price per Person: ${{ hall.average_price_per_person }}</p>
-      <p>Description: {{ hall.description }}</p>
+{% extends 'base.html' %}
 
-      <!-- Display Rating -->
-      <h3>Rating: {{ hall.rating }}</h3>
+{% block content %}
+  <h2>{{ hall.name }}</h2>
+  <p>Capacity: {{ hall.capacity }}</p>
+  <p>Average price per person: ${{ hall.average_price_per_person }}</p>
+  <p>Description: {{ hall.description }}</p>
 
-      <!-- Display Reviews -->
-      <h3>Reviews:</h3>
-      {% if reviews %}
-        <ul>
-          {% for review in reviews %}
-            <li>{{ review.name }} - Rating: {{ review.rating }} - {{ review.comment }}</li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p>No reviews yet.</p>
-      {% endif %}
+  <!-- Отображение рейтинга -->
+  <h3>Rating: {{ hall.rating }}</h3>
 
-      <!-- Add a Review Form -->
-      <h3>Add a Review:</h3>
-      <form method="post" action="{% url 'hall_detail' hall.id %}">
-        {% csrf_token %}
-        {{ review_form.as_p }}
-        <button type="submit">Submit Review</button>
-      </form>
+  <!-- Отображение отзывов -->
+  <h3>Reviews:</h3>
+  {% if reviews %}
+    <ul>
+      {% for review in reviews %}
+        <li>{{ review.name }} - Rating: {{ review.rating }} - {{ review.comment }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No reviews</p>
+  {% endif %}
 
-      <!-- Display Messages -->
-      {% if messages %}
-        <ul class="messages">
-          {% for message in messages %}
-            <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
+  <!-- Форма добавления отзыва -->
+  <h3>Add review:</h3>
+  <form method="post" action="{% url 'hall_detail' hall.id %}">
+    {% csrf_token %}
+    {{ review_form.as_p }}
+    <button type="submit">Send review</button>
+  </form>
 
-    {% endblock %}
+  <!-- Отображение сообщений -->
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}
+
 </body>
 </html>

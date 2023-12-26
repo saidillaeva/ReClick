@@ -1,9 +1,15 @@
-from django.shortcuts import render, get_object_or_404,  redirect
+from django.shortcuts import get_object_or_404,  redirect
 from django.contrib import messages
-from .models import BanquetHall, Review
 from .forms import ReservationForm, ReviewForm
-from django.http import HttpResponse
 from decimal import Decimal
+
+from django.shortcuts import render
+from .models import BanquetHall
+
+def hall_list(request):
+    halls = BanquetHall.objects.all()
+    return render(request, 'hall_list.html', {'halls': halls})
+
 
 def reservation(request):
     if request.method == 'POST':
