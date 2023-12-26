@@ -2,9 +2,8 @@ from django.shortcuts import get_object_or_404,  redirect
 from django.contrib import messages
 from .forms import ReservationForm, ReviewForm
 from decimal import Decimal
-
 from django.shortcuts import render
-from .models import BanquetHall
+from .models import BanquetHall, Reservation
 
 def hall_list(request):
     halls = BanquetHall.objects.all()
@@ -15,13 +14,20 @@ def reservation(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
+            # Сохраните новое бронирование
+            new_reservation = form.save(commit=False)
+            new_reservation.save()
 
-            return render(request, 'success_page.html')  # Замените 'success_page.html' на ваш шаблон успешного бронирования
+            # Получите все бронирования для выбранного зала и даты
+            booked_reservations = Reservation.objects.filter(hall=new_reservation.hall, date=new_reservation.date).exclude(id=new_reservation.id)
+
+            return render(request, 'success_page.html', {'booked_reservations': booked_reservations})
     else:
         form = ReservationForm()
 
     halls = BanquetHall.objects.all()
     return render(request, 'reservation_page.html', {'form': form, 'halls': halls})
+
 
 
 def hall_detail(request, hall_id):
@@ -43,7 +49,7 @@ def hall_detail(request, hall_id):
             hall.rating = Decimal(total_rating) / Decimal(total_reviews)
             hall.save()
 
-            messages.success(request, 'Отзыв успешно отправлен!')
+            messages.success(request, 'Review has been successfully submitted!')
             return redirect('hall_detail', hall_id=hall_id)
     else:
         review_form = ReviewForm()

@@ -1,16 +1,38 @@
 from django import forms
 from .models import BanquetHall, Review
 
-class ReservationForm(forms.Form):
-    hall = forms.ModelChoiceField(queryset=BanquetHall.objects.all(), empty_label="Select a hall")
-    date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    start_time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
-    end_time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
-    name = forms.CharField(max_length=100)
-    email = forms.EmailField()
-    phone = forms.CharField(max_length=15)
-    guests = forms.IntegerField(min_value=1, label='Number of Guests')
+from django import forms
+from .models import Reservation
 
+class ReservationForm(forms.ModelForm):
+    class Meta:
+        model = Reservation
+        fields = '__all__'
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date'}),
+            'start_time': forms.TimeInput(attrs={'type': 'time'}),
+            'end_time': forms.TimeInput(attrs={'type': 'time'}),
+        }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        start_time = cleaned_data.get('start_time')
+        end_time = cleaned_data.get('end_time')
+
+        # Проверка на корректность времени (пример)
+        if start_time and end_time and start_time >= end_time:
+            raise forms.ValidationError("End time should be later than start time")
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        reservation = super(ReservationForm, self).save(commit=False)
+
+        # Дополнительные операции, если необходимо
+
+        if commit:
+            reservation.save()
+        return reservation
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review

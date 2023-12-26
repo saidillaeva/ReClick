@@ -17,10 +17,11 @@ class RestaurantPostModel(models.Model):
     GENRE = (
         ('Russian', 'Russian'),
         ('Italian', 'Italian'),
-        ('American', 'American'),
+        ('Korean', 'Korean'),
         ('Japanese', 'Japanese'),
         ('Chinese', 'Chinese'),
-
+        ('Kyrgyz', 'Kyrgyz'),
+        ('Turkish', 'Turkish'),
     )
     restaurant = models.CharField(max_length=100, verbose_name="Enter your restaurants name")
     description = models.TextField()
