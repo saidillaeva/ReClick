@@ -2,17 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Person Create</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #E0F2F1; /* Mint Cream */
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            background-color: #90CAF9; /* Light Blue */
+            border-radius: 10px;
+            margin-top: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #37474F; /* Blue Grey */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        label {
+            margin: 10px 0;
+            color: #546E7A; /* Blue Grey */
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #B0BEC5; /* Blue Grey */
+            border-radius: 5px;
+            width: 80%;
+            box-sizing: border-box;
+            color: #37474F; /* Blue Grey */
+        }
+
+        button {
+            background-color: #81C784; /* Light Green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button[type="reset"] {
+            background-color: #FF5252; /* Pastel Red */
+        }
+
+        button:hover {
+            background-color: #4CAF50; /* Green */
+        }
+    </style>
 </head>
 <body>
-<div style="background-color: aquamarine">
-  <h1>Create</h1>
-  <form action="/create_person/" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Add</button>
-    <button type="reset">Clear</button>
-  </form>
+<div class="container">
+    <h1>Create</h1>
+    <form action="/create_person/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add</button>
+        <button type="reset">Clear</button>
+    </form>
 </div>
 </body>
 </html>

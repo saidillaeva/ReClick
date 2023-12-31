@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Person_Update</title>
+    <title>Person Update</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa; /* Light Gray */
             margin: 0;
             padding: 0;
         }
 
         .container {
-            background-color: yellow;
+            background-color: #B3E0FF; /* Light Blue */
             padding: 20px;
             margin: 50px auto;
             max-width: 400px;
@@ -22,7 +22,7 @@
 
         h1 {
             text-align: center;
-            color: #007bff;
+            color: #1565C0; /* Dark Blue */
         }
 
         form {
@@ -33,26 +33,31 @@
         button {
             margin-top: 10px;
             padding: 8px;
-            background-color: #007bff;
-            color: #fff;
+            background-color: #1565C0; /* Dark Blue */
+            color: #fff; /* White */
             border: none;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         button[type="reset"] {
-            background-color: #dc3545;
+            background-color: #EF5350; /* Pastel Red */
+        }
+
+        button:hover {
+            background-color: #0D47A1; /* Darker Blue */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Update</h1>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit">Update</button>
-            <button type="reset">Clear</button>
-        </form>
-    </div>
+<div class="container">
+    <h1>Update</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+        <button type="reset">Clear</button>
+    </form>
+</div>
 </body>
 </html>

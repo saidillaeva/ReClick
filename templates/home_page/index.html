@@ -59,7 +59,7 @@
     <div class="carousel-inner">
         {% for slide in slider_list %}
         <div class="carousel-item {% if forloop.first %}active{% endif %} text-center">
-            <img src="{{ slide.photo }}" alt="">
+            <img src="{{ slide.photo }}" alt="" height="600">
             <div class="carousel-caption">
                 <h3></h3>
             </div>
@@ -83,7 +83,7 @@
   .nav-link {
     display: block; /* Делаем элемент блочным для настройки ширины и высоты */
     padding: 10px; /* Задаем отступы внутри блока */
-    background-color: #3498db; /* Задаем цвет фона */
+    background-color: #2b5437; /* Задаем цвет фона */
     color: #fff; /* Задаем цвет текста */
     text-decoration: none; /* Убираем подчеркивание ссылки */
     border-radius: 5px; /* Добавляем скругленные углы */
@@ -91,7 +91,7 @@
   }
 
   .nav-link:hover {
-    background-color: #2980b9; /* Изменяем цвет фона при наведении */
+    background-color: #2b5437; /* Изменяем цвет фона при наведении */
   }
 </style>
 
@@ -99,3 +99,4 @@
 {% include 'header_and_footer/footer.html' %}
 </body>
 </html>
+

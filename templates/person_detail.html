@@ -2,15 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PersonDetail</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+
+        .header {
+            background-color: #E57373;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .content {
+            background-color: #FFCDD2;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        h1, p {
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-<div style="background-color: darksalmon">
-  <h1>Name:{{object.name}}</h1>
-  <p>Description:{{object.description}}</p>
-  <p>Average cost:{{object.average_cost}}</p>
-  <p>Genre:{{object.genre}}</p>
-  <p>Number:{{object.contact_number}}</p>
+<div class="header">
+    <h1>Name: {{ object.name }}</h1>
+</div>
+<div class="container">
+    <div class="content">
+        <p>Description: {{ object.description }}</p>
+        <p>Average cost: {{ object.average_cost }}</p>
+        <p>Genre: {{ object.genre }}</p>
+        <p>Contact Number: {{ object.contact_number }}</p>
+    </div>
 </div>
 </body>
 </html>
